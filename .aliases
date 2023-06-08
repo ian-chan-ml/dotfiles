@@ -24,9 +24,12 @@ alias du="dust"
 alias pomo="porsmo"
 alias docker="podman"
 alias tmux, tx="zellij"
+alias ft="fleet"
 alias cl="clear"
 alias diff="delta"
 alias :q="exit"
+alias tf="terraform"
+alias ktx="kubectx"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.

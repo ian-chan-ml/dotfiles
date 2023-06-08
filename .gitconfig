@@ -127,7 +127,7 @@
 [commit]
 
 	# https://help.github.com/articles/signing-commits-using-gpg/
-	gpgsign = true
+	gpgsign = false
 
 [diff]
 
@@ -155,6 +155,7 @@
 	default = simple
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
+	gpgsign = false
 
 # URL shorthands
 
@@ -183,18 +184,24 @@
 	defaultBranch = main
 
 [credential]
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
+	helper = store
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [gpg]
 	program = gpg
+	format = ssh
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 [user]
-	signingkey = 6B2F33D00FA9A91C
-	name = Fluxionism
-	email = quanianitis@gmail.com
+	signingkey = /Users/quanianitis/.ssh/id_ed25519.pub
+	name = ian-chan-ml
+	email = ichan@moneylion.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

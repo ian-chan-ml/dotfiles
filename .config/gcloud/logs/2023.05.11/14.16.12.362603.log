@@ -1,0 +1,90 @@
+2023-05-11 14:16:12,363 DEBUG    root            Loaded Command Group: ['gcloud', 'topic']
+2023-05-11 14:16:12,364 DEBUG    root            Loaded Command Group: ['gcloud', 'topic', 'startup']
+2023-05-11 14:16:12,366 DEBUG    root            Running [gcloud.topic.startup] with arguments: []
+2023-05-11 14:16:12,366 DEBUG    root            Running [gcloud.topic.startup] with arguments: [--document: "None"]
+2023-05-11 14:16:12,368 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
+2023-05-11 14:16:12,473 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'set']
+2023-05-11 14:16:12,475 DEBUG    root            Loaded Command Group: ['gcloud', 'topic', 'configurations']
+2023-05-11 14:16:12,478 INFO     ___FILE_ONLY___ [m[1mNAME[m
+    gcloud topic startup - supplementary help for gcloud startup options
+
+[m[1mDESCRIPTION[m
+[m[1mChoosing a Python Interpreter[m
+
+    The [1mgcloud[m CLI runs under Python. Note that [1mgcloud[m requires Python version
+    3.5-3.9. Certain Windows and Linux installs include a bundled Python
+    interpreter depending on the package and architecture. Similarly,
+    Intel-based Macs offer the option to install CPython as part of the main
+    install script. Otherwise, you must have a Python interpreter available on
+    your system. The [1mgcloud[m CLI will attempt to locate an interpreter on your
+    system PATH by looking for the following binaries:
+
+      ▪ python3
+      ▪ python
+
+    If you have a bundled Python installed, it will be preferred. To override
+    this you will need to set the [1mCLOUDSDK_PYTHON[m environment variable, see
+    below.
+
+    Other Python tools shipped in the Google Cloud CLI do not support Python 3
+    and require Python 2.7.x, including:
+
+      ▪ [1mdev_appserver[m
+
+[m[1mBundled Python on Linux[m
+
+    Linux-based installs include a bundled Python installation on x86_64
+    architectures. This installation will be used by default. If you want to
+    use a different Python installation, set the [1mCLOUDSDK_PYTHON[m environment
+    variable to the absolute path to your python interpreter.
+
+    If you have multiple Python interpreters available (including a bundled
+    python) or if you don't have one on your PATH, you can specify which
+    interpreter to use by setting the [1mCLOUDSDK_PYTHON[m environment variable. For
+    example:
+
+        # Use the python3 interpreter on your path
+        $ export CLOUDSDK_PYTHON=python3
+
+        # Use a python you have installed in a special location
+        $ export CLOUDSDK_PYTHON=/usr/local/my-custom-python-install/python
+
+    [1mgsutil[m versions 5.0 and onward support Python 3.5-3.8. To use a different
+    interpreter for [1mgsutil[m than for the other Python tools, set the
+    [1mCLOUDSDK_GSUTIL_PYTHON[m environment variable to the desired interpreter.
+
+    [1mbq[m now supports Python 3.5-3.8. To use a different interpreter for [1mbq[m than
+    or the other Python tools, you can set the desired interpreter by setting
+    the [1mCLOUDSDK_BQ_PYTHON[m environment variable.
+
+[m[1mConfiguring the Python Interpreter[m
+
+    While not typically necessary, you are able to pass interpreter level
+    arguments to the Python running [1mgcloud[m via the [1mCLOUDSDK_PYTHON_ARGS[m
+    environment variable.
+
+    A common use case for this (which has been special-cased) is to enable
+    'site packages'. This allows Python to pick up libraries from the system (
+    for example, those that may have been installed with [1mpip[m). Site packages
+    may be necessary if you require certain native libraries (as is the case if
+    you work with service accounts using a legacy [1m.p12[m key, for example). To
+    enable site packages, set [1mCLOUDSDK_PYTHON_SITEPACKAGES=1[m. Note that
+    enabling site packages may cause conflicts with [1mgcloud[m packaged libraries,
+    depending on what you have installed on your system.
+
+[m[1mSetting Configurations and Properties[m
+
+    Your active configuration can also be set via the environment variable
+    [1mCLOUDSDK_ACTIVE_CONFIG_NAME[m. This allows you to specify a certain
+    configuration in a given terminal session without changing the global
+    default configuration.
+
+    In addition to being able to set them via [1mgcloud config set[m, each [1mgcloud[m
+    property has a corresponding environment variable. They take the form:
+    [1mCLOUDSDK_SECTION_PROPERTY[m. For example, if you wanted to change your active
+    project for just one terminal you could run:
+
+        $ export CLOUDSDK_CORE_PROJECT=my-project
+
+    For more information, see [1mgcloud topic configurations[m.
+[m
