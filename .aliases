@@ -30,6 +30,8 @@ alias diff="delta"
 alias :q="exit"
 alias tf="terraform"
 alias ktx="kubectx"
+alias mk="minikube"
+
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.

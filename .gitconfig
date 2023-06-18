@@ -197,7 +197,7 @@
 	required = true
 [user]
 	signingkey = /Users/quanianitis/.ssh/id_ed25519.pub
-	name = ian-chan-ml
+	name = quanianitis
 	email = ichan@moneylion.com
 [credential "https://github.com"]
 	helper = 

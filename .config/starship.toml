@@ -1,3 +1,10 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+
 # Sets user-defined palette
 palette = "catppuccin_latte"
 
@@ -21,48 +28,25 @@ style = 'bold blue'
 Enterprise_Naming_Scheme-voidstars = 'void**'
 symbol = "  "
 
-[buf]
-symbol = " "
+[battery]
+full_symbol = '🔋 '
+charging_symbol = '⚡️ '
+discharging_symbol = '💀 '
 
-[nodejs]
-disabled = true
-format = 'via [$symbol]($style)'
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 10%
+threshold = 10
+style = 'bold red'
 
-[c]
-symbol = " "
+[[battery.display]] # 'bold yellow' style and 💦 symbol when capacity is between 10% and 30%
+threshold = 30
+style = 'bold yellow'
 
-[conda]
-symbol = " "
-
-[dart]
-symbol = " "
-
-[docker_context]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[fossil_branch]
-symbol = " "
 
 [git_branch]
 symbol = " "
 
-[golang]
-symbol = " "
-
-[guix_shell]
-symbol = " "
-
-[haskell]
-symbol = " "
-
-[haxe]
-symbol = "⌘ "
+# [golang]
+# symbol = " "
 
 [hg_branch]
 symbol = " "
@@ -70,26 +54,9 @@ symbol = " "
 [hostname]
 ssh_symbol = " "
 
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[lua]
-symbol = " "
-
 [memory_usage]
 symbol = " "
 
-[meson]
-symbol = "喝 "
-
-[nim]
-symbol = " "
-
-[nix_shell]
-symbol = " "
 
 [os.symbols]
 Alpaquita = " "
@@ -135,26 +102,26 @@ Windows = " "
 [package]
 symbol = " "
 
-[pijul_channel]
-symbol = "🪺 "
+# [pijul_channel]
+# symbol = "🪺 "
 
-[python]
-symbol = " "
+# [python]
+# symbol = " "
 
-[rlang]
-symbol = "ﳒ "
+# [rlang]
+# symbol = "ﳒ "
 
-[ruby]
-symbol = " "
+# [ruby]
+# symbol = " "
 
-[rust]
-symbol = " "
+# [rust]
+# symbol = " "
 
-[scala]
-symbol = " "
+# [scala]
+# symbol = " "
 
-[spack]
-symbol = "🅢  "
+# [spack]
+# symbol = "🅢  "
 
 [gcloud]
 disabled = true
@@ -186,3 +153,141 @@ surface0 = "#ccd0da"
 base = "#eff1f5"
 mantle = "#e6e9ef"
 crust = "#dce0e8"
+
+[kubernetes]
+disabled = false
+style = "cyan blue"
+detect_files = ['k8s']
+# [kubernetes.context_aliases]
+# 'dev.local.cluster.k8s' = 'dev'
+# '.*/openshift-cluster/.*' = 'openshift'
+# 'gke_.*_(?P<var_cluster>[\w-]+)' = 'gke-$var_cluster'
+# [kubernetes.user_aliases]
+# 'dev.local.cluster.k8s' = 'dev'
+# 'root/.*' = 'root'
+
+[bun]
+format = "via [$symbol]($style)"
+
+[buf]
+format = "via [$symbol]($style)"
+
+[cmake]
+format = "via [$symbol]($style)"
+
+[cobol]
+format = "via [$symbol]($style)"
+
+[crystal]
+format = "via [$symbol]($style)"
+
+[daml]
+format = "via [$symbol]($style)"
+
+[dart]
+format = "via [$symbol]($style)"
+
+[deno]
+format = "via [$symbol]($style)"
+
+[dotnet]
+format = "[$symbol(🎯 $tfm )]($style)"
+
+[elixir]
+format = 'via [$symbol]($style)'
+
+[elm]
+format = 'via [$symbol]($style)'
+
+[erlang]
+format = 'via [$symbol]($style)'
+
+[fennel]
+format = 'via [$symbol]($style)'
+
+[golang]
+format = 'via [$symbol]($style)'
+
+[gradle]
+format = 'via [$symbol]($style)'
+
+[haxe]
+format = 'via [$symbol]($style)'
+
+[helm]
+format = 'via [$symbol]($style)'
+
+[java]
+format = 'via [$symbol]($style)'
+
+[julia]
+format = 'via [$symbol]($style)'
+
+[kotlin]
+format = 'via [$symbol]($style)'
+
+[lua]
+format = 'via [$symbol]($style)'
+
+[meson]
+format = 'via [$symbol]($style)'
+
+[nim]
+format = 'via [$symbol]($style)'
+
+[nodejs]
+disabled = true
+format = 'via [$symbol]($style)'
+
+[ocaml]
+format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
+
+[opa]
+format = 'via [$symbol]($style)'
+
+[perl]
+format = 'via [$symbol]($style)'
+
+[php]
+format = 'via [$symbol]($style)'
+
+[pulumi]
+format = 'via [$symbol$stack]($style)'
+
+[purescript]
+format = 'via [$symbol]($style)'
+
+[python]
+format = 'via [$symbol]($style)'
+
+[raku]
+format = 'via [$symbol]($style)'
+
+[red]
+format = 'via [$symbol]($style)'
+
+[rlang]
+format = 'via [$symbol]($style)'
+
+[ruby]
+format = 'via [$symbol]($style)'
+
+[rust]
+format = 'via [$symbol]($style)'
+
+[solidity]
+format = 'via [$symbol]($style)'
+
+[swift]
+format = 'via [$symbol]($style)'
+
+[vagrant]
+format = 'via [$symbol]($style)'
+
+[vlang]
+format = 'via [$symbol]($style)'
+
+[zig]
+format = 'via [$symbol]($style)'
+
+

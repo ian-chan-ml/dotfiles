@@ -1,3 +1,0 @@
-2023-05-11 14:17:36,605 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
-2023-05-11 14:17:36,607 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'docker_helper']
-2023-05-11 14:17:36,608 ERROR    root            (gcloud.auth.docker-helper) argument METHOD: Must be specified.

@@ -13,4 +13,6 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
+.config/gcloud
+
 .cargo/registry

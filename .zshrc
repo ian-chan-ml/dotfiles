@@ -16,6 +16,8 @@ export PATH=$PATH:/Users/quanianitis/.cargo/bin
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH=$PATH:/opt/X11/bin
 export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/Users/quanianitis/.local/share/containers/podman-desktop/extensions-storage/compose/bin
+export PATH=$PATH:/usr/local/opt/python/libexec/bin
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="$HOME/.sdkman"
@@ -27,7 +29,7 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="jonathan" # set by `omz`
+ZSH_THEME="duellj" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -95,11 +97,15 @@ plugins=(
   kubectl
   kubectx
   golang
-  aws
   docker
   history-substring-search
   zsh-syntax-highlighting
   zsh-autosuggestions
+  zsh-interactive-cd
+  minikube
+  1password
+  github
+  python
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -137,12 +143,6 @@ bindkey '^[OA' history-substring-search-up
 bindkey '^[OB' history-substring-search-down
 
 eval "$(zoxide init zsh)"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/quanianitis/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/quanianitis/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/quanianitis/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/quanianitis/google-cloud-sdk/completion.zsh.inc'; fi
 export PATH="/opt/homebrew/opt/openldap/bin:$PATH" echo export PATH="/opt/homebrew/opt/openldap/sbin:$PATH"
 export PATH="/opt/homebrew/opt/openldap/bin:$PATH" echo export PATH="/opt/homebrew/opt/openldap/sbin:$PATH"
 export PATH="/opt/homebrew/opt/openldap/bin:$PATH"
@@ -158,3 +158,14 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 eval "$(starship init zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/quanianitis/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/quanianitis/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/quanianitis/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/quanianitis/google-cloud-sdk/completion.zsh.inc'; fi
+export GPG_TTY=$(tty)
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/quanianitis/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
