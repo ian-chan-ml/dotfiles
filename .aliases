@@ -6,6 +6,7 @@ alias ...="z ../.."
 alias ....="z ../../.."
 alias .....="z ../../../.."
 alias ~="z ~" # `cd` is probably faster to type though
+alias cd="z" # `cd` is probably faster to type though
 alias -- -="z -"
 
 # Shortcuts
@@ -13,11 +14,10 @@ alias d=" ~/Documents/Dropbox"
 alias dl="z ~/Downloads"
 alias dt="z ~/Desktop"
 alias p="z ~/projects"
-alias g="gitui"
+alias gitui="gitui -t mocha.ron"
 
 # Always use color output for `ls`
 alias lsa="ls -la"
-alias cd="z"
 alias cat="bat"
 alias rng="ranger"
 alias du="dust"
@@ -31,7 +31,8 @@ alias :q="exit"
 alias tf="terraform"
 alias ktx="kubectx"
 alias mk="minikube"
-
+alias nv="nvim"
+alias vim="nvim"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.

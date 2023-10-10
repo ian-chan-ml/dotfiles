@@ -87,7 +87,6 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 # Added by Toolbox App
