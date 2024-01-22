@@ -13,10 +13,11 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:/Users/ichan/.cargo/bin
 # export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':'
 export PATH="$PATH:$(go env GOPATH)/bin"
-export PATH=$PATH:/opt/X11/bin
-export PATH=$PATH:/opt/homebrew/bin
-export PATH=$PATH:/usr/local/opt/python/libexec/bin
-export HELIX_RUNTIME=~/tools/helix/runtime
+# export PATH=$PATH:/opt/X11/bin
+# export PATH=$PATH:/opt/homebrew/bin
+# export PATH=$PATH:/usr/local/opt/python/libexec/bin
+# export HELIX_RUNTIME=~/tools/helix/runtime
+# export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="$HOME/.sdkman"
@@ -26,7 +27,7 @@ export HELIX_RUNTIME=~/tools/helix/runtime
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="refined" # set by `omz`
+ZSH_THEME="cloud" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -43,7 +44,7 @@ ZSH_THEME="refined" # set by `omz`
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -56,16 +57,16 @@ ZSH_THEME="refined" # set by `omz`
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -92,21 +93,26 @@ plugins=(
   git
   aws
   kubectl
-  kubectx
-  golang
-  docker
+  # docker
   history-substring-search
   zsh-syntax-highlighting
   zsh-autosuggestions
-  zsh-interactive-cd
-  minikube
-  1password
+  # zsh-interactive-cd
+  # minikube
+  # 1password
   github
-  python
+  # python
+  kube-ps1
+  # per-directory-history
+	httpie
+  fzf-dir-navigator
+  terraform
 )
 
+# source <(kubectl completion zsh)
+# source <(stern --completion=zsh)
+# source ~/tools/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -115,11 +121,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='hx'
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='hx'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -135,20 +141,58 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="exa"
 alias cd="z"
 
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
+# bindkey '^[OA' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
 
+function lk {
+  cd "$(walk "$@")"
+}
 
 eval "$(zoxide init zsh)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+
+# complete -o nospace -C /usr/local/Cellar/terraform/1.5.7/bin/terraform terraform
+
+# export GPG_TTY=$(tty)
+# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+PROMPT='$(kube_ps1)'$PROMPT
+# alias sso_login="aws sso login --sso-session moneylion"
+
+# The following lines were added by compinstall
+# zstyle ':autocomplete:*' history-incremental-search-backward
+
+# zstyle ':autocomplete:*' add-space \
+#     executables aliases functions builtins reserved-words commands
+
+# zstyle ':autocomplete:*' delay 0.5  # seconds (float)
+# zstyle ':autocomplete:*' ignored-input '..##'
+
+# # # Autocompletion
+# # zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=( $(( LINES / 5 )) )'
+
+# # # Override history search.
+# zstyle ':autocomplete:history-incremental-search-backward:*' list-lines 8
+
+# History menu.
+# zstyle ':autocomplete:history-search-backward:*' list-lines 256
+
+# zstyle ':completion:*' completer _expand _complete _ignored _approximate
+# zstyle ':completion:*' insert-unambiguous true
+# zstyle ':completion:*' list-colors ''
+# zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+# zstyle ':completion:*' menu select=0
+# zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+# zstyle :compinstall filename '/Users/ichan/.zshrc'
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
-export GPG_TTY=$(tty)
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+# export PATH="/Users/ichan/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
