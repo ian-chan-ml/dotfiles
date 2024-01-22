@@ -22,17 +22,19 @@ alias cat="bat"
 alias rng="ranger"
 alias du="dust"
 alias pomo="porsmo"
-alias docker="podman"
-alias tmux, tx="zellij"
+alias tx="zellij"
 alias ft="fleet"
 alias cl="clear"
 alias diff="delta"
 alias :q="exit"
 alias tf="terraform"
-alias ktx="kubectx"
 alias mk="minikube"
 alias nv="nvim"
 alias vim="nvim"
+
+# Kubernetes
+alias ktx="kubectx"
+alias kns="kubens"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
